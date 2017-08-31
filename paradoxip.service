@@ -6,8 +6,6 @@ After=network-online.target
 
 [Service]
 EnvironmentFile=/opt/paradoxip/config.ini
-User=openhab
-Group=openhab
 WorkingDirectory=/opt/paradoxip/
 PermissionsStartOnly=true
 ExecStart=/usr/bin/python -u /opt/paradoxip/IP150-MQTT.py

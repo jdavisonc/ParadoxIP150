@@ -244,7 +244,7 @@ def connect_ip150login():
     print "Waiting for initial data to be received (scripts, etc.)..."
     for timer in range(1, 8, 1):
         time.sleep(1)
-        print "."
+        #print "."
 
     return u, p, socketclient
 
@@ -415,7 +415,7 @@ if __name__ == '__main__':
 
             try:
 
-                print(".")
+                #print(".")
 
                 s = connect_ip150socket(IP150_IP, IP150_Port)
 
@@ -429,9 +429,9 @@ if __name__ == '__main__':
 
                     #print "Requesting /keep_alive.html"
                     data, s = connect_ip150readData(s, "GET " + keep_alive_url + " HTTP/1.1\r\nHost: " + IP150_IP + ':' + str(IP150_Port) + "\r\nConnection: keep-alive\r\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.94 Safari/537.36\r\nAccept: */*;q=0.8\r\nReferer: http://" + IP150_IP + ':' + str(IP150_Port) + "/menu.html\r\nAccept-Encoding: gzip, deflate, sdch\r\nAccept-Language: en,af;q=0.8,en-GB;q=0.6\r\n\r\n")
-                    if "200 OK" in data:
+                    #if "200 OK" in data:
                         #print "Keep-alive 200 OK received from IP Module"
-                        print "-"
+                        #print "-"
                     #print data
                     s.close()
                     s = connect_ip150socket(IP150_IP, IP150_Port)
@@ -479,6 +479,7 @@ if __name__ == '__main__':
                 if SirenStatusRead != SirenStatus:
                     client.publish(Topic_Publish_Siren_Status , str(SirenStatusRead), qos=0, retain=False)
                     SirenStatus = SirenStatusRead
+		    print "Siren Status " + str(SirenStatusRead)
 
 
 
